@@ -6,6 +6,7 @@ RUN go mod tidy && \
     go build
 
 FROM alpine:latest
+RUN apk --no-cache add curl
 WORKDIR /root
 COPY --from=builder /app ./
 CMD ["./echo-server"]
